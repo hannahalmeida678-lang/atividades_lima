@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Satisfação</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00e213, #7c3aed);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .cabecalho {
+            background: linear-gradient(135deg, #ff00d4, #07cdff);
+            color: white;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .cabecalho h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .cabecalho p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        form {
+            padding: 35px;
+        }
+
+        .grupo {
+            margin-bottom: 25px;
+        }
+
+        .grupo > label,
+        .titulo-grupo {
+            display: block;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #000000;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+        }
+
+        .opcoes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .opcao {
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #fafafa;
+        }
+
+        .opcao:hover {
+            border-color: #000802;
+            background: #f5f3ff;
+        }
+
+        .opcao input {
+            margin-right: 8px;
+            accent-color: #000000;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .obrigatorio {
+            color: #dc2626;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+        }
+
+        .rodape {
+            text-align: center;
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            form {
+                padding: 25px;
+            }
+
+            .opcoes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="cabecalho">
+            <h1>⭐ Pesquisa de Satisfação</h1>
+            <p>Sua opinião é muito importante para nós!</p>
+        </header>
+
+        <form action="" method="post">
+
+            <!-- aqui é onde o usuario irá colocar seus dados pessoais -->
+            <div class="grupo">
+                <label for="nome">
+                    Nome <span class="obrigatorio">*</span><!--nome-->
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    required placeholder="Digite seu nome"
+                    
+                >
+            </div>
+
+            <div class="grupo">
+                <label for="email">
+                    E-mail <span class="obrigatorio">*</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required placeholder="exemplo@email.com"
+                    
+                >
+            </div>
+
+            <div class="grupo">
+                <label for="telefone">
+                    Telefone <span class="obrigatorio">*</span>
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                   required placeholder="(00) 00000-0000"
+                    
+                >
+            </div>
+
+            <!-- Unidade -->
+            <div class="grupo">
+                <label for="unidade">
+                    Unidade atendida <span class="obrigatorio">*</span>
+                </label>
+
+                <select id="unidade" name="unidade" required>
+                    <option value="">Selecione uma unidade</option>
+                    <option value="centro">Unidade Centro</option>
+                    <option value="norte">Unidade Norte</option>
+                    <option value="sul">Unidade Sul</option>
+                    <option value="leste">Unidade Leste</option>
+                    <option value="oeste">Unidade Oeste</option>
+                </select>
+            </div>
+
+            <!-- Avaliação geral -->
+            <div class="grupo">
+                <span class="titulo-grupo">
+                    Avaliação geral <span class="obrigatorio">*</span>
+                </span>
+
+                <div class="opcoes">
+
+                    <label class="opcao">
+                        <input
+                            type="radio"
+                            name="avaliacao"
+                            value="otimo"
+                            required
+                        >
+                        ˗ˏˋ ★ ˎˊ˗ Ótimo
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="radio"
+                            name="avaliacao"
+                            value="bom"
+                        >
+                       😁👍🆗 Bom
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="radio"
+                            name="avaliacao"
+                            value="regular"
+                        >
+                        😐 Regular
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="radio"
+                            name="avaliacao"
+                            value="ruim"
+                        >
+                        😔 Ruim
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Serviços utilizados -->
+            <div class="grupo">
+                <span class="titulo-grupo">
+                    Serviços utilizados
+                </span>
+
+                <div class="opcoes">
+
+                    <label class="opcao">
+                        <input
+                            type="checkbox"
+                            name="servicos[]"
+                            value="atendimento"
+                        >
+                        Atendimento
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="checkbox"
+                            name="servicos[]"
+                            value="suporte"
+                        >
+                        Suporte
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="checkbox"
+                            name="servicos[]"
+                            value="treinamento"
+                        >
+                        Treinamento
+                    </label>
+
+                    <label class="opcao">
+                        <input
+                            type="checkbox"
+                            name="servicos[]"
+                            value="consultoria"
+                        >
+                        Consultoria
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Comentários -->
+            <div class="grupo">
+                <label for="comentarios">
+                    Comentários ou sugestões
+                </label>
+
+                <textarea
+                    id="comentarios"
+                    name="comentarios"
+                    placeholder="Conte para nós como podemos melhorar..."
+                ></textarea>
+            </div>
+
+            <button type="submit">
+                Enviar avaliação 🚀
+            </button>
+
+            <p class="rodape">
+                * Campos obrigatórios
+            </p>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
+```
